@@ -4,14 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.pruebecitaroom.modelo.DaoJugador
-import com.example.pruebecitaroom.modelo.Jugador
+import com.example.pruebecitaroom.modelo.daos.DaoEquipo
+import com.example.pruebecitaroom.modelo.daos.DaoJugador
+import com.example.pruebecitaroom.modelo.entities.Equipo
+import com.example.pruebecitaroom.modelo.entities.Jugador
 
-@Database(entities = [Jugador::class], version = 2)
+@Database(entities = [Jugador::class, Equipo::class], version = 1)
 abstract class AppDB : RoomDatabase() {
     abstract fun DaoJugador(): DaoJugador
+    abstract fun DaoEquipo(): DaoEquipo
 
     companion object {
         private var INSTANCE: AppDB? = null
